@@ -29,6 +29,6 @@ Prerequisites
 
 2.Start the frontend development server:
 - cd ../frontend
-npm run dev
+- npm run dev
 
 The backend server will be running at http://localhost:8000, and the frontend development server will be running at http://localhost:3000.
