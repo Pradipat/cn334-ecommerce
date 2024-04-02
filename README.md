@@ -25,6 +25,7 @@ Prerequisites
 1.Start the backend server:
 - cd ../backend
 - source env/bin/activate (on Windows, use `env\Scripts\activate`)
+- cd /app
 - python manage.py runserver
 
 2.Start the frontend development server:
