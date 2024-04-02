@@ -1,4 +1,4 @@
-#!/Users/pradipat/Desktop/cn334-ecommerce2/backend/env/bin/python3.12
+#!/Users/pradipat/Documents/GitHub/cn334-ecommerce/backend/env/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys

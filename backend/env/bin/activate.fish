@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/pradipat/Desktop/cn334-ecommerce2/backend/env"
+set -gx VIRTUAL_ENV "/Users/pradipat/Documents/GitHub/cn334-ecommerce/backend/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
