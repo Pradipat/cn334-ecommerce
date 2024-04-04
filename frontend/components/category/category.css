@@ -1,0 +1,7 @@
+.subCatagoryBtn{
+    transition: 0.2s;
+}
+
+.subCatagoryBtn:hover{
+    background-color: rgb(221, 221, 221);
+}

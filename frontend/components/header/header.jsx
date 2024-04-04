@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faMagnifyingGlass, faBars } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 export default function Header({ clicked, handleHover, handleOut}) {
   const handleMouseOver = () => {
@@ -16,7 +17,7 @@ export default function Header({ clicked, handleHover, handleOut}) {
       <div className="w-full flex flex-col justify-center items-center gap-6 py-3 border-b border-white/20"> 
         <div className="flex w-3/5 justify-between items-center">
             <div className='flex gap-9 items-center'>
-              <img src="/logo.png" alt="Logo" className='w-auto h-4'/>
+              <Link href="/"><img src="/logo.png" alt="Logo" className='w-auto h-4'/></Link>
               <div className="flex ">
                 <div className="relative text-xs font-normal">
                   <input
@@ -121,7 +122,9 @@ export default function Header({ clicked, handleHover, handleOut}) {
         >
           <div className='flex w-3/5 justify-start text-gray-300 text-xs gap-16 py-9'>
             <div className='flex flex-col gap-3'>
+            <Link href="/category/Programming">
               <div className='text-sm font-normal'>Programming</div>
+            </Link>
               <div>Web Development</div>
               <div>AI</div>
               <div>Game Development</div>

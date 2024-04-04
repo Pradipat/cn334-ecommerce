@@ -1,13 +1,14 @@
+import './homeContent.css';
 
-export default function cardCard() {
+export default function cardCard({ title, subtitle, imageSource, status }) {
     return (
-        <div className='h-[381px] w-[352px] bg-[#252525] rounded-[16px] overflow-hidden '>
-            <img src="/Class1.png" alt="Logo" className='w-full h-[220px]'/>
-            <div className='flex flex-col justify-center h-[calc(100%-220px)] mx-4'>
-                <div className='rounded-[0.25rem] px-[0.7rem] py-[0.1rem] border w-max text-xs font-normal border-[#F9858D] text-[#F9858D]'>Now Available</div>
-                <div className='h-[0.7rem] w-full border-b border-b-[#414141] mb-2'></div>
-                <div className='text-base font-bold mb-3'>50 Chapter Guide to HTML , CSS , JS for Web Development</div>
-                <div className=' text-sm font-light text-[#A0A0A0]'>Fullstack Dev, akkharawoot</div>
+        <div className={`card-container w-[352px] min-w-[352px] rounded-[16px] h-[381px] bg-[#252525] overflow-hidden`}>
+            <img src={imageSource} alt="Logo" className='object-cover rounded-[16px] h-[220px]' />
+            <div className='flex flex-col mx-4 h-[calc(100%-220px)] justify-center'>
+                <div className='rounded-[0.25rem] px-[0.7rem] py-[0.25rem] border w-max font-normal text-xs border-[#F9858D] text-[#F9858D]'>{status}</div>
+                <div className='h-[0.7rem] w-full border-b border-b-[#414141] mb-3'></div>
+                <div className='text-base font-bold mb-3:'>{title}</div>
+                <div className={`text-sm font-light text-[#A0A0A0]`}>{subtitle}</div>
             </div>
         </div>
     );

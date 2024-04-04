@@ -5,8 +5,8 @@ import CategoryContent from "@/components/homeContent/categoryContent";
 
 export default function Home() {
   return (
-    <main className="w-full ">
-        {/* <MainContent /> */}
+    <main className="w-full pb-[100px]">
+        <MainContent />
         <Banner />
         <CategoryContent />
         <CategoryContent />
