@@ -3,6 +3,7 @@ import SubCatagoryBar from "@/components/category/subCatagoryBar";
 import PopularCard from "@/components/category/popularCard";
 import '../../../components/homeContent/homeContent.css';
 import SmallCard from "@/components/category/smallCard";
+import ClinentSmallCard from "@/components/category/ClinentSmallCard";
 
 export default function Page({params}) {
 const [mainCategory, subCategory] = params.category;
@@ -46,36 +47,40 @@ const [mainCategory, subCategory] = params.category;
           </div>
         </div>
 
-        <div className="flex flex-wrap w-full justify-start gap-[2%] md:gap-[1.33333333333%]">
-          <SmallCard
+        <div className="flex flex-wrap w-full justify-start gap-[2%] md:gap-[1.33333333333%] mb-[80px]">
+          <ClinentSmallCard
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development "
                 subtitle="Fullstack Dev, akkharawoot"
                 imageSource="/Class1.png"
+                productId="123"
             />
-          <SmallCard
+          <ClinentSmallCard
+                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
+                subtitle="Fullstack Dev, akkharawoot"
+                imageSource="/Class1.png"
+                productId="123"
+            />
+            <ClinentSmallCard
+                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
+                subtitle="Fullstack Dev, akkharawoot"
+                imageSource="/Class1.png"
+                productId="123"
+            />
+            <ClinentSmallCard
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
                 subtitle="Fullstack Dev, akkharawoot"
                 imageSource="/Class1.png"
             />
-            <SmallCard
+            <ClinentSmallCard
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
                 subtitle="Fullstack Dev, akkharawoot"
                 imageSource="/Class1.png"
             />
-            <SmallCard
+            <ClinentSmallCard
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
                 subtitle="Fullstack Dev, akkharawoot"
                 imageSource="/Class1.png"
-            />
-            <SmallCard
-                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
-                imageSource="/Class1.png"
-            />
-            <SmallCard
-                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
-                imageSource="/Class1.png"
+                productId="123"
             />
         </div>
         
