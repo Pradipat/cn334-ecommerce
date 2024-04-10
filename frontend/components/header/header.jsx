@@ -33,7 +33,7 @@ export default function Header({ clicked, handleHover, handleOut}) {
               </div>
             </div>
             <div className="flex gap-6">
-              <div >My class</div>
+              <Link href="/account/myClass"><div >My class</div></Link>
               <div className='flex items-center gap-2'>
                 <span className='font-normal'>name</span>
                 <FontAwesomeIcon icon={faChevronDown} className="w-2 h-2" />
@@ -43,7 +43,7 @@ export default function Header({ clicked, handleHover, handleOut}) {
         <div className='flex w-3/5 justify-start items-center gap-10 text-sm '>
             <div className=' relative flex items-center gap-2'
               onMouseOver={handleMouseOver}
-              onMouseOut={handleMouseOver}
+              onMouseOut={handleMouseOut}
             >
               <FontAwesomeIcon icon={faBars} className="w-4 h-4 font-semibold" /><span className='font-semibold text-gray-300'>Category</span>
               <div className={`${clicked ? "" : "hidden" } w-full absolute left-0 -bottom-[13px] border-b border-[#FF0000]`}></div>
@@ -75,24 +75,28 @@ export default function Header({ clicked, handleHover, handleOut}) {
             <Link href="/category/Programming">
               <div className='text-sm font-normal'>Programming</div>
             </Link>
-              <div>Web Development</div>
-              <div>AI</div>
-              <div>Game Development</div>
-              <div>Database Design</div>
+              <Link href="/category/Programming"><div>Web Development</div></Link>
+              <Link href="/category/Programming"><div>AI</div></Link>
+              <Link href="/category/Programming"><div>Game Development</div></Link>
+              <Link href="/category/Programming"><div>Database Design</div></Link>
             </div>
             <div className='flex flex-col gap-3'>
-              <div className='text-sm font-normal'>Illustration</div>
-              <div>Illustration</div>
-              <div>Characters</div>
-              <div>Concept Art</div>
-              <div>Backgrounds</div>
+              <Link href="/category/Programming">
+                <div className='text-sm font-normal'>Illustration</div>
+              </Link>
+              <Link href="/category/Programming"><div>Illustration</div></Link>
+              <Link href="/category/Programming"><div>Characters</div></Link>
+              <Link href="/category/Programming"><div>Concept Art</div></Link>
+              <Link href="/category/Programming"><div>Backgrounds</div></Link>
             </div>
             <div className='flex flex-col gap-3'>
-              <div className='text-sm font-normal'>Music Production</div>
-              <div>Song Writing</div>
-              <div>Music Arranging</div>
-              <div>Music Mastering</div>
-              <div>Music Composition</div>
+              <Link href="/category/Programming">
+                <div className='text-sm font-normal'>Music Production</div>
+              </Link>
+              <Link href="/category/Programming"><div>Song Writing</div></Link>
+              <Link href="/category/Programming"><div>Music Arranging</div></Link>
+              <Link href="/category/Programming"><div>Music Mastering</div></Link>
+              <Link href="/category/Programming"><div>Music Composition</div></Link>
             </div>
           </div>
         </div>

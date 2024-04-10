@@ -7,37 +7,49 @@ export default function categoryContent() {
     <div className="w-11/12 mx-auto lg:w-[1120px] mt-[60px] overflow-hidden">
         <div className="mb-4 text-xl font-medium">Illustration</div>
         <div className="flex flex-wrap justify-between w-full ">
-            <CategoryCard
+            <CategoryCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
                 status="Now Available"
+                id="12123"
             />
-            <CategoryCard
+            <CategoryCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
                 status="Now Available"
-            /><CategoryCard
+                id="12123"
+            /><CategoryCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
                 status="Now Available"
-            /><CategoryCard
+                id="12123"
+            /><CategoryCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
                 status="Now Available"
-            /><CategoryCard
+                id="12123"
+            /><CategoryCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
                 status="Now Available"
-            /><CategoryCard
+                id="12123"
+            /><CategoryCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
                 status="Now Available"
+                id="12123"
             />
         </div>
         

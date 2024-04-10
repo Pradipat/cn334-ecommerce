@@ -19,23 +19,28 @@ const [mainCategory, subCategory] = params.category;
 
         <div className="mb-4 text-[1.1rem] font-semibold md:text-[1.3rem] text-black mt-[60px]">Popular Class</div>
         <div className=" flex gap-8 md:justify-between overflow-auto md:overflow-visible">
-            <PopularCard
+            <PopularCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
                 status="Now Available"
+                id="12123"
             />
-            <PopularCard
+            <PopularCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
                 status="Now Available"
-            />
-            <PopularCard
+                id="12123"
+            /><PopularCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
                 status="Now Available"
+                id="12123"
             />
         </div>
 
@@ -48,39 +53,53 @@ const [mainCategory, subCategory] = params.category;
         </div>
 
         <div className="flex flex-wrap w-full justify-start gap-[2%] md:gap-[1.33333333333%] mb-[80px]">
-          <ClinentSmallCard
-                title="50 Chapter Guide to HTML , CSS , JS for Web Development "
-                subtitle="Fullstack Dev, akkharawoot"
-                imageSource="/Class1.png"
-                productId="123"
-            />
-          <ClinentSmallCard
+          <ClinentSmallCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
-                productId="123"
+                status="Now Available"
+                id="12123"
             />
-            <ClinentSmallCard
+          <ClinentSmallCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
-                productId="123"
+                status="Now Available"
+                id="12123"
             />
-            <ClinentSmallCard
+          <ClinentSmallCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
+                status="Now Available"
+                id="12123"
             />
-            <ClinentSmallCard
+          <ClinentSmallCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
+                status="Now Available"
+                id="12123"
             />
-            <ClinentSmallCard
+          <ClinentSmallCard 
                 title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                subtitle="Fullstack Dev, akkharawoot"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
                 imageSource="/Class1.png"
-                productId="123"
+                status="Now Available"
+                id="12123"
+            />
+          <ClinentSmallCard 
+                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
+                teacherRole="Fullstack Dev"
+                teacherName="akkharawoot"
+                imageSource="/Class1.png"
+                status="Now Available"
+                id="12123"
             />
         </div>
         

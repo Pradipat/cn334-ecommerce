@@ -8,21 +8,27 @@ export default function MainContent() {
             <div className='flex gap-8 md:justify-between overflow-auto md:overflow-visible'>
                 <CardCard 
                     title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                    subtitle="Fullstack Dev, akkharawoot"
+                    teacherRole="Fullstack Dev"
+                    teacherName="akkharawoot"
                     imageSource="/Class1.png"
                     status="Now Available"
+                    id="12123"
                 />
                 <CardCard 
                     title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                    subtitle="Fullstack Dev, akkharawoot"
+                    teacherRole="Fullstack Dev"
+                    teacherName="akkharawoot"
                     imageSource="/Class1.png"
                     status="Now Available"
+                    id="12123"
                 />
                 <CardCard 
                     title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                    subtitle="Fullstack Dev, akkharawoot"
+                    teacherRole="Fullstack Dev"
+                    teacherName="akkharawoot"
                     imageSource="/Class1.png"
                     status="Now Available"
+                    id="12123"
                 />
             </div>
        </div>

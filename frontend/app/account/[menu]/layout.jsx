@@ -34,8 +34,8 @@ export default function RootLayout({ children , params }) {
 
     return (
           <main className="w-full mainbg">
-            <div className="w-full lg:w-[1120px] mx-auto flex h-max ">
-                <div className=" bg-[#121212] w-[31%] h-full]">
+            <div className="w-full lg:w-[1120px] mx-auto flex  h-full  ">
+                <div className=" bg-[#121212] w-0 md:w-[31%]">
 
                     <div className=" font-medium text-2xl mb-[40px] mt-[60px]">
                         <div>Hello,</div>
@@ -99,7 +99,7 @@ export default function RootLayout({ children , params }) {
                 </div>
 
 
-                <div className=" bg-[#F2F2F2] pl-10 w-[69%] h-[600px]">{children}</div>
+                <div className=" bg-[#F2F2F2] md:pl-10 w- md:w-[69%] min-h-[600px]">{children}</div>
             </div>
           </main>
     )

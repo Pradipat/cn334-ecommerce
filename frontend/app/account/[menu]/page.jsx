@@ -1,31 +1,25 @@
-import MyClassCard from "@/components/account/myClassCard";
+import MyClass from "@/components/account/myClass";
+import OrderCart from "@/components/account/orderCart";
+import OrderHistory from "@/components/account/orderHistory";
+import ManageCourse from "@/components/account/manageCourse";
+import Dashboard from "@/components/account/dashboard";
 
 export default function Page({params}) {
       const menu = params.menu;
       return (
-        <div className="w-full">
-          <div className=" font-medium text-[20px] text-[#383838] mt-[90px] mb-[45px]">My Class</div>
-          <div className="flex flex-wrap w-[100%] justify-between">
-            <MyClassCard 
-              className = "Stylized Character Illustration Using Deformation"
-              teacherName = "Seoji"
-              teacherRole = "Illustrator"
-              img = "/Class1.png"
-            />
-            <MyClassCard 
-              className = "Stylized Character Illustration Using Deformation"
-              teacherName = "Seoji"
-              teacherRole = "Illustrator"
-              img = "/Class1.png"
-            />
-            <MyClassCard 
-              className = "Stylized Character Illustration Using Deformation"
-              teacherName = "Seoji"
-              teacherRole = "Illustrator"
-              img = "/Class1.png"
-            />
-          </div>
-        </div>
+        <>
+            {menu === "myClass" ? (
+              <MyClass />
+            ) : menu === "orderCart" ? (
+              <OrderCart />
+            ) : menu === "orderHistory" ? (
+              <OrderHistory />
+            ) : menu === "dashboard" ? (
+              <Dashboard />
+            ) : menu === "manageCourse" ? (
+              <ManageCourse />
+            ) : null}
+        </>
       )
     }
     

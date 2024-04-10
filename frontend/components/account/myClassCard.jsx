@@ -1,7 +1,7 @@
 
 function myClassCard({className, teacherName, teacherRole, img}) {
   return (
-        <div className="w-[357px] bg-white text-black px-[17px] py-[17px] shadow-lg rounded-[13px] mb-5">
+        <div className=" md:w-[357px] bg-white text-black px-[17px] py-[17px] shadow-lg rounded-[13px] mb-5">
             <div className="flex mb-2 items-center">
                 <img src={img} className="h-[66px] w-[66px] object-cover rounded-[8px] mr-[10px]" alt="icon"></img>
                 <div className="flex flex-col">
