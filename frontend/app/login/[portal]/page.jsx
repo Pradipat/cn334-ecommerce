@@ -39,13 +39,13 @@ function page({params}) {
                 <div className="relative flex-col border border-[#929292] flex rounded-[5px] h-[44px] w-[343px] overflow-hidden justify-center px-2 leading-[10px]">
                     <label
                         className={`${
-                            isFocusedEmail || email ? "text-[11px] top-1" : "text-[16px] top-1/2 -translate-y-1/2"
-                        } absolute left-2 text-gray-500 transition-all duration-200 pointer-events-none`}
+                            isFocusedEmail || email ? "text-[13px] top-1.5" : "text-[16px] top-1/2 -translate-y-1/2"
+                        } absolute left-2 text-gray-500 transition-all duration-200 pointer-events-none z-10`}
                     >
                         Email
                     </label>
                     <input
-                    className={` w-full outline-none text-[14px] `}
+                    className={`${isFocusedEmail || email ? "" : ""} absolute left-2 bottom-2 w-full outline-none text-[14px] `}
                     type="email"
                     name="email"
                     value={email}
@@ -58,13 +58,13 @@ function page({params}) {
                 <div className="relative flex-col border border-[#929292] flex rounded-[5px] h-[44px] w-[343px] overflow-hidden justify-center px-2 leading-[10px]">
                 <label
                     className={`${
-                        isFocusedPassword || password ? "text-[11px] top-1" : "text-[16px] top-1/2 -translate-y-1/2"
-                    } absolute left-2 text-gray-500 transition-all duration-200 pointer-events-none`}
+                        isFocusedPassword || password ? "text-[13px] top-1.5" : "text-[16px] top-1/2 -translate-y-1/2"
+                    } absolute left-2 text-gray-500 transition-all duration-200 pointer-events-none z-10`}
                     >
                     Password
                 </label>
                     <input
-                    className="w-full outline-none text-[14px]"
+                    className="absolute left-2 bottom-2 w-full outline-none text-[14px]"
                     type="password"
                     name="password"
                     value={password}
