@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faMagnifyingGlass, faBars } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
-export default function Header({ clicked, handleHover, handleOut}) {
+export default function Header({ clicked, handleHover, handleOut, userData, logout}) {
   const handleMouseOver = () => {
     handleHover();
   };
@@ -32,12 +32,18 @@ export default function Header({ clicked, handleHover, handleOut}) {
                 </div>
               </div>
             </div>
-            <div className="flex gap-6">
-              <Link href="/account/myClass"><div >My class</div></Link>
-              <div className='flex items-center gap-2'>
-                <span className='font-normal'>name</span>
-                <FontAwesomeIcon icon={faChevronDown} className="w-2 h-2" />
-              </div>
+            <div className="flex gap-6 items-center">
+              {userData ? (<>
+                <Link href="/account/myClass"><div >My class</div></Link>
+                <div className='flex items-center gap-2'>
+                  <span className='font-normal'>{userData.name}</span>
+                  <FontAwesomeIcon icon={faChevronDown} className="w-2 h-2" />
+                </div>
+                <span onClick={logout} className='font-light text-[14px]'>Sign Out</span></>
+              ) : (
+                <Link href="/login/signIn"><span className=' font-light'>Sign In</span></Link>
+              )}
+              
             </div>
         </div>
         <div className='flex w-3/5 justify-start items-center gap-10 text-sm '>

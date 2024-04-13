@@ -1,8 +1,23 @@
 'use client'
 import React,{ useState } from "react";
 import Link from "next/link";
+import axios from 'axios';
+import axiosInstance from "@/axios.config";
+import { useRouter } from 'next/navigation';
 
 function signUp() {
+    const router = useRouter();
+    
+    const fetchAllAccounts = async () => {
+      try {
+        const response = await axiosInstance.get('/accounts');
+        return response.data.data; // Assuming the backend returns data in { count, data } format
+      } catch (error) {
+        console.error('Error fetching accounts:', error);
+        return [];
+      }
+    };
+    
     const [name, setName] = useState("");
     const [isFocusedName, setIsFocusedName] = useState(false);
     const nameHandle = (e) => {
@@ -17,9 +32,17 @@ function signUp() {
       };
 
     const [email, setEmail] = useState("");
+    const [isEmailExist, setIsEmailExist] = useState(false);
     const [isFocusedEmail, setIsFocusedEmail] = useState(false);
-    const emailHandle = (e) => {
+    const emailHandle = async (e) => {
         setEmail(e.target.value);
+        try {
+          const accounts = await fetchAllAccounts();
+          const emailExists = accounts.some((account) => account.email === e.target.value);
+          setIsEmailExist(emailExists);
+        } catch (error) {
+          console.error('Error fetching accounts:', error);
+        }
       };
     const handleFocusEmail = () => {
         setIsFocusedEmail(true);
@@ -54,11 +77,39 @@ function signUp() {
     const handleBlurcPassword = () => {
         setIsFocusedcPassword(false);
       };
+    
+    const handleSubmit = async (e) => {
+     e.preventDefault();
+      try {
+
+        const accounts = await fetchAllAccounts();
+
+        const emailExists = accounts.some((account) => account.email === email);
+
+        if (emailExists) {
+          console.error('Email already exists');
+          return;
+        }
+        else if (password !== cpassword) {
+          console.error('Password is not equal Confirm Password');
+          return;
+        } else if (password.length < 8 ) {
+          console.error('Password is less than 8 characters');
+          return;
+        };
+
+        const response = await axiosInstance.post('/accounts', { name, email, password });
+        console.log('Account created:', response.data);
+        router.push('/login/signIn');
+      } catch (error) {
+        console.error('Error creating account:', error.response.data);
+      }
+    };
   return (
     <div className="text-black flex flex-col justify-center w-max items-center">
         <div className="text-black text-[24px] font-semibold">Sign Up</div>
         <div className="flex flex-col mt-[50px]">
-            <form className="flex flex-col gap-3">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                 <div className="relative flex-col border border-[#929292] flex rounded-[5px] h-[44px] w-[343px] overflow-hidden justify-center px-2 leading-[10px]">
                     <label
                         className={`${
@@ -78,7 +129,7 @@ function signUp() {
                     />
                 </div>
 
-                <div className="relative flex-col border border-[#929292] flex rounded-[5px] h-[44px] w-[343px] overflow-hidden justify-center px-2 leading-[10px]">
+                <div><div className="relative flex-col border border-[#929292] flex rounded-[5px] h-[44px] w-[343px] overflow-hidden justify-center px-2 leading-[10px]">
                     <label
                         className={`${
                             isFocusedEmail || email ? "text-[13px] top-1.5" : "text-[16px] top-1/2 -translate-y-1/2"
@@ -96,6 +147,8 @@ function signUp() {
                     onBlur={handleBlurEmail}
                     />
                 </div>
+                {isEmailExist && (
+                <div className=" text-red-500 text-[14px] font-light">This email is used</div>)}</div>
 
                 <div><div className="relative flex-col border border-[#929292] flex rounded-[5px] h-[44px] w-[343px] overflow-hidden justify-center px-2 leading-[10px]">
                 <label

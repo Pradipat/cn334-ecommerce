@@ -1,8 +1,14 @@
 'use client'
-import React,{ useState } from "react";
+import React,{ useState, useContext, useEffect } from "react";
 import Link from 'next/link';
+import axiosInstance from "@/axios.config";
+import { useRouter } from 'next/navigation';
+import { AuthContext } from "@/AuthContext";
 
 function signIn() {
+    const router = useRouter();
+    const { login } = useContext(AuthContext);
+
     const [email, setEmail] = useState("");
     const [isFocusedEmail, setIsFocusedEmail] = useState(false);
     const emailHandle = (e) => {
@@ -29,11 +35,28 @@ function signIn() {
         setIsFocusedPassword(false);
       };
 
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await axiosInstance.post('/accounts/login', { email, password });
+        if (response) {
+          login(response.data.account);
+          console.log('Login successful:', response.data);
+          router.push('/');
+        } else {
+          console.error('Login failed: No response from server');
+        }
+      } catch (error) {
+        console.error('Login failed:', error.response.data);
+      }
+    };
+  
+
   return (
     <div className="text-black flex flex-col justify-center w-max items-center">
         <div className="text-black text-[24px] font-semibold">Sign In</div>
         <div className="flex flex-col mt-[50px]">
-            <form className="flex flex-col gap-3">
+            <form onSubmit={handleLogin} className="flex flex-col gap-3">
                 <div className="relative flex-col border border-[#929292] flex rounded-[5px] h-[44px] w-[343px] overflow-hidden justify-center px-2 leading-[10px]">
                     <label
                         className={`${

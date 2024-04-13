@@ -3,6 +3,7 @@ import { FaSearch } from 'react-icons/fa';
 import "./globals.css";
 import ClientHeader from "@/components/header/ClientHeader.jsx";
 import Footer from "@/components/footer/footer.jsx";
+import { AuthProvider } from "@/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <AuthProvider>
         {/* แก้ header */}
         <div className="fixed top-0 left-0 w-full z-20"><ClientHeader /></div>
 
@@ -22,6 +24,7 @@ export default function RootLayout({ children }) {
 
         {/* แก้ footer */}
         <div className="w-full overflow-hidden"><Footer /></div>
+        </AuthProvider>
       </body>
     </html>
   );

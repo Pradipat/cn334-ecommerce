@@ -1,9 +1,21 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Header from './header.jsx';
+import { AuthContext } from "@/AuthContext";
 
 const ClientHeader = () => {
+  const {  logout , user } = useContext(AuthContext);
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    if (user) {
+      setUserData(user);
+    } else {
+      setUserData(null);
+    }
+  }, [user]);
+
   const [clicked, setClicked] = useState(false);
 
   const handleHover = () => {
@@ -19,6 +31,8 @@ const ClientHeader = () => {
       clicked={clicked}
       handleHover={handleHover}
       handleOut={handleOut}
+      userData={userData}
+      logout={logout}
     />
   );
 };

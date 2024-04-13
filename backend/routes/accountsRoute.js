@@ -6,20 +6,13 @@ const router = express.Router();
 // Create account
 router.post('/', async (req, res) => {
     try{
-        if(
-            !req.body.name ||
-            !req.body.email ||
-            !req.body.password 
-        ){
-            return res.status(400).send({
-                message: 'Send all required field: name, email, password',
-            });
+        const { name, email, password } = req.body;
+
+        if (!name || !email || !password) {
+            return res.status(400).send({ message: 'Send all required fields: name, email, password' });
         }
-        const newAccount = {
-            name: req.body.name,
-            email: req.body.email, 
-            password: req.body.password,
-        };
+
+        const newAccount = { name, email, password };
 
         const account = await accounts.create(newAccount);
 
@@ -30,7 +23,7 @@ router.post('/', async (req, res) => {
     }
 })
 
-// Get ALL accounts
+// Get SOME accounts
 router.get('/:id', async (req, res) => {
     try{
 
@@ -45,7 +38,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-// Get SOME account
+// Get ALL account
 router.get('/', async (req, res) => {
     try{
         const account = await accounts.find({});
@@ -100,6 +93,24 @@ router.delete('/:id', async (req, res) => {
         }
         
         return res.status(200).send({ message: 'Account deleted successfully'});
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({ message: error.message});
+    }
+})
+
+// Login Checker
+router.post('/login', async (req, res) => {
+    try{
+        const { email, password } = req.body;
+
+        const account = await accounts.findOne({ email });
+
+        if (!account || account.password !== password) {
+            return res.status(401).json({ message: 'Invalid email or password' });
+          }
+
+        return res.status(200).json({ message: 'Login successful', account });
     } catch (error) {
         console.log(error.message);
         res.status(500).send({ message: error.message});
