@@ -15,8 +15,8 @@ const courseSchema = mongoose.Schema({
   level: {type: String, required: true},
   totalVideos: {type: Number, required: true},
   totalTime: {type: Number, required: true},
-  thumbnailImage: { type: String },
-  backgroundImage: { type: String },
+  thumbnailImageURL: { type: String },
+  backgroundImageURL: { type: String },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

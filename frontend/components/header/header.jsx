@@ -78,13 +78,13 @@ export default function Header({ clicked, handleHover, handleOut, userData, logo
         >
           <div className='flex w-3/5 justify-start text-gray-300 text-xs gap-16 py-9'>
             <div className='flex flex-col gap-3'>
-            <Link href="/category/Programming">
+            <Link href="/category/Programming/all">
               <div className='text-sm font-normal'>Programming</div>
             </Link>
-              <Link href="/category/Programming"><div>Web Development</div></Link>
-              <Link href="/category/Programming"><div>AI</div></Link>
-              <Link href="/category/Programming"><div>Game Development</div></Link>
-              <Link href="/category/Programming"><div>Database Design</div></Link>
+              <Link href="/category/Programming/Web Development"><div>Web Development</div></Link>
+              <Link href="/category/Programming/AI"><div>AI</div></Link>
+              <Link href="/category/Programming/Game Development"><div>Game Development</div></Link>
+              <Link href="/category/Programming/Database Design"><div>Database Design</div></Link>
             </div>
             <div className='flex flex-col gap-3'>
               <Link href="/category/Programming">

@@ -11,9 +11,11 @@ const [mainCategory, subCategory] = params.category;
     <div className="bg-white w-full">
       <div className="w-11/12 lg:w-[1120px] mx-auto mt-[60px]">
 
-        <div className="text-black md:text-3xl md:font-medium mb-5">Illustration</div>
+        <div className="text-black md:text-3xl md:font-medium mb-5">{mainCategory}</div>
 
-        <SubCatagoryBar />
+        <SubCatagoryBar
+          mainCategory = {mainCategory}
+        />
 
         <Banner />
 

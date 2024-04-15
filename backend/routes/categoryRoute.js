@@ -74,4 +74,23 @@ router.get('/', async (req, res) => {
     }
 })
 
+// Get subcategories by main category
+router.get('/subcategories/:mainCategoryName', async (req, res) => {
+  try {
+      const mainCategoryName = req.params.mainCategoryName;
+
+      const category = await categories.findOne({ name: mainCategoryName });
+
+      if (!category) {
+          return res.status(404).send({ message: 'Category not found' });
+      }
+
+      // Return only the subcategories
+      return res.status(200).send({ subCategories: category.subCategories }); 
+  } catch (error) {
+      console.log(error.message);
+      res.status(500).send({ message: 'Server error' });
+  }
+});
+
 export default router;

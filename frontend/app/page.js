@@ -8,8 +8,12 @@ export default function Home() {
     <main className="w-full pb-[100px]">
         <MainContent />
         <Banner />
-        <CategoryContent />
-        <CategoryContent />
+        <CategoryContent
+          category="Illustration"   
+        />
+        <CategoryContent 
+          category="Illustration"     
+        />
     </main>
   );
 }

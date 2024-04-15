@@ -5,7 +5,6 @@ import mongoose from 'mongoose';
 import accountsRoute from './routes/accountsRoute.js';
 import coursesRoute from './routes/coursesRoute.js';
 import categoriesRoute from './routes/categoryRoute.js';
-import imageRoute from './routes/imageRoute.js';
 import cors from 'cors';
 
 const app = express();
@@ -21,7 +20,6 @@ app.get('/', (req, res) => {
 app.use('/accounts', accountsRoute );
 app.use('/courses', coursesRoute );
 app.use('/categories', categoriesRoute );
-app.use('/images', imageRoute); 
 
 mongoose
     .connect(mongoDBURL)
