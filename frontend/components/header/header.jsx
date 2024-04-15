@@ -87,22 +87,22 @@ export default function Header({ clicked, handleHover, handleOut, userData, logo
               <Link href="/category/Programming/Database Design"><div>Database Design</div></Link>
             </div>
             <div className='flex flex-col gap-3'>
-              <Link href="/category/Programming">
+              <Link href="/category/Illustration/all">
                 <div className='text-sm font-normal'>Illustration</div>
               </Link>
-              <Link href="/category/Programming"><div>Illustration</div></Link>
-              <Link href="/category/Programming"><div>Characters</div></Link>
-              <Link href="/category/Programming"><div>Concept Art</div></Link>
-              <Link href="/category/Programming"><div>Backgrounds</div></Link>
+              <Link href="/category/Illustration/Illustration"><div>Illustration</div></Link>
+              <Link href="/category/Illustration/Characters"><div>Characters</div></Link>
+              <Link href="/category/Illustration/Concept Art"><div>Concept Art</div></Link>
+              <Link href="/category/Illustration/Backgrounds"><div>Backgrounds</div></Link>
             </div>
             <div className='flex flex-col gap-3'>
-              <Link href="/category/Programming">
+              <Link href="/category/Music Production/all">
                 <div className='text-sm font-normal'>Music Production</div>
               </Link>
-              <Link href="/category/Programming"><div>Song Writing</div></Link>
-              <Link href="/category/Programming"><div>Music Arranging</div></Link>
-              <Link href="/category/Programming"><div>Music Mastering</div></Link>
-              <Link href="/category/Programming"><div>Music Composition</div></Link>
+              <Link href="/category/Music Production/Song Writing"><div>Song Writing</div></Link>
+              <Link href="/category/Music Production/Music Arranging"><div>Music Arranging</div></Link>
+              <Link href="/category/Music Production/Music Mastering"><div>Music Mastering</div></Link>
+              <Link href="/category/Music Production/Music Composition"><div>Music Composition</div></Link>
             </div>
           </div>
         </div>

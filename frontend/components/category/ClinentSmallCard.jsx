@@ -2,7 +2,7 @@
 import React, {useState} from 'react'
 import SmallCard from './smallCard';
 
-function ClinentSmallCard({ title, subtitle, imageSource , productId}) {
+function ClinentSmallCard({ title, imageSource , instructorName, instructorRole , id, status}) {
     const [hover,setHover] = useState(false);
 
     const handleHoverIn = () => {
@@ -17,9 +17,11 @@ function ClinentSmallCard({ title, subtitle, imageSource , productId}) {
         handleHoverIn={handleHoverIn}
         handleHoverOut={handleHoverOut}
         title={title}
-        subtitle={subtitle}
+        instructorName={instructorName}
+        instructorRole={instructorRole}
         imageSource={imageSource}
-        productId={productId}
+        id={id}
+        status={status}
     />
   )
 }

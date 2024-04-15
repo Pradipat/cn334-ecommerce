@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay,faPercent,faRotateRight} from '@fortawesome/free-solid-svg-icons';
 import "./products.css"
 
-function butButtom({price, classStatus}) {
+function butButtom({price, classStatus, id}) {
   return (
         <div className='flex flex-col items-center'>
             <div className="flex gap-5">

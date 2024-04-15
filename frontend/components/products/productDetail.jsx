@@ -2,6 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faClock,faCalendarCheck,faChartSimple,faCirclePlay,faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 
 function productDetail({classStatus,timeLimit,level,videoTotal,videoTime,price}) {
+  const formatVideoTime = (totalMinutes) => {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    return `${hours} Hours ${minutes} Minutes`; // Return formatted string
+  };
   return (
         <div className="flex flex-col-reverse md:flex-row w-10/12 lg:w-[960px] mx-auto mt-[60px] gap-14 md:gap-0">
             <div className="flex flex-col gap-3 w-full md:w-1/2 md:border-r md:border-[#515151] pb-7">
@@ -20,7 +25,7 @@ function productDetail({classStatus,timeLimit,level,videoTotal,videoTime,price})
               </div>
               <div className="text-base">
                 <FontAwesomeIcon className="mr-2.5 text-[#A0A0A0]" icon={faCirclePlay} />
-                Total {videoTotal} videos, {videoTime[0]} Hours {videoTime[1]} Minutes
+                Total {videoTotal} videos, {formatVideoTime(videoTime)}
               </div>
               <div className="text-base">
                 <FontAwesomeIcon className="mr-2.5 text-[#A0A0A0]" icon={faLayerGroup} />
@@ -31,12 +36,12 @@ function productDetail({classStatus,timeLimit,level,videoTotal,videoTime,price})
             <div className="w-full md:w-1/2 flex justify-center">
               <div className="flex flex-col w-full md:w-9/12 justify-center">
                 <div className=" font-medium text-sm">Up to
-                  <span className="text-[#ED2040] text-base mx-1.5">18%
+                  <span className="text-[#ED2040] text-base mx-1.5">0%
                   </span>off
                   <span className="text-[#A0A0A0] font-light mx-1.5 line-through">USD {price}</span>
                 </div>
                 <div className="flex justify-between items-center mb-4 mt-0.5">
-                  <span className=" text-2xl font-semibold">USD 176.00 ~</span>
+                  <span className=" text-2xl font-semibold">USD {price} ~</span>
                   <span className="text-[#A0A0A0] font-medium text-sm">approx. price by currency</span>
                 </div>
                 <div className="flex justify-between border-t border-b border-[#3f3f3f] py-2">

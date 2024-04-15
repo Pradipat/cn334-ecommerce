@@ -10,7 +10,7 @@ function productImg({teacherName,teacherRole,className,mainCategory,subCategory,
                 <div className="h-[100%] borderBgButtom">
                 </div>
             </div>
-            <img className="h-full object-cover" src={classImg} alt="product_image"></img>
+            <img className="w-full h-full object-cover" src={classImg} alt="product_image"></img>
         </div>
 
         <div className="flex absolute bottom-0 flex-col justify-center items-center mb-6 w-full">
@@ -19,7 +19,7 @@ function productImg({teacherName,teacherRole,className,mainCategory,subCategory,
                 <div className="text-[#A0A0A0] text-[0.5rem] md:text-xs content-center "><FontAwesomeIcon icon={faChevronRight} /></div>
                 <div className="md:font-medium font-normal text-sm md:text-base">{subCategory}</div>
             </div>
-            <div className="md:w-3/5 w-11/12 mt-6 mb-3 flex items-center text-2xl font-semibold md:text-4xl md:font-semibold text-center md:leading-[3rem]">{className}</div>
+            <div className="md:w-3/5 w-11/12 mt-6 mb-3 flex items-center justify-center text-2xl font-semibold md:text-4xl md:font-semibold text-center md:leading-[3rem]">{className}</div>
             <div className="flex text-base font-light md:text-lg md:font-extralight">
                 <div>{teacherRole}</div>
                 <div className="mr-1">,</div>
