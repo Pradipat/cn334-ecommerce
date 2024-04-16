@@ -75,7 +75,7 @@ function manageCourse() {
                 handleDeleteCourse={() => handleDeleteCourse(course._id)}
             />
             ))}
-            <ManageCourseCard 
+            {/* <ManageCourseCard 
               oldtitle = "Stylized Character Illustration Using Deformation"
               oldinstructorName = "Seoji"
               oldinstructorRole = "Illustrator"
@@ -94,7 +94,7 @@ function manageCourse() {
               oldinstructorRole = "Illustrator"
               oldthumbnailImageURL = "/Class1.png"
               oldprice = {190.99}
-            />
+            /> */}
             {isAdd ?
             <><div onClick={addHandleF} className={`bg-[rgba(0,0,0,0.49)] w-screen min-h-[100vh] top-0 left-0 fixed z-[100] flex justify-center items-center`}></div>
             <div className="w-screen top-[5vh] left-0 fixed z-[100] flex justify-center"><ManageCourseAddCard addHandleF={addHandleF} /></div></>

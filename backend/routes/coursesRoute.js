@@ -212,5 +212,32 @@ router.delete('/:courseId', async (req, res) => {
     }
 });
 
+// Update course sold count after checkout
+router.post('/updateSoldCount', async (req, res) => {
+    try {
+        const courseIds = req.body.courseIds; 
+
+        if (!courseIds) {
+            return res.status(400).json({ message: 'courseIds are required' });
+        }
+
+        // Update soldCount for each course
+        const updatedCourses = await Promise.all(courseIds.map(async (courseId) => {
+            const course = await coureses.findByIdAndUpdate(
+               courseId, 
+               { $inc: { soldCount: 1 } }, 
+               { new: true } // Return the updated document
+            );
+            return course; 
+        }));
+
+        res.status(200).json(updatedCourses);
+
+    } catch (error) {
+        console.error('Error updating sold count:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
 export default router;
 

@@ -39,9 +39,9 @@ export default function Header({ clicked, handleHover, handleOut, userData, logo
                   <span className='font-normal'>{userData.name}</span>
                   <FontAwesomeIcon icon={faChevronDown} className="w-2 h-2" />
                 </div>
-                <span onClick={logout} className='font-light text-[14px]'>Sign Out</span></>
+                <span onClick={logout} className='font-light text-[14px] cursor-pointer'>Sign Out</span></>
               ) : (
-                <Link href="/login/signIn"><span className=' font-light'>Sign In</span></Link>
+                <Link href="/login/signIn"><span className=' font-light cursor-pointer'>Sign In</span></Link>
               )}
               
             </div>

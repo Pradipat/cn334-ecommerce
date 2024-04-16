@@ -3,8 +3,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Header from './header.jsx';
 import { AuthContext } from "@/AuthContext";
+import { useRouter } from 'next/navigation';
 
 const ClientHeader = () => {
+  const router = useRouter();
   const {  logout , user } = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
 
@@ -26,13 +28,18 @@ const ClientHeader = () => {
     setClicked(false);
   };
 
+  const handleLogout = () => {
+    router.push('/');
+    logout();
+}
+
   return (
     <Header
       clicked={clicked}
       handleHover={handleHover}
       handleOut={handleOut}
       userData={userData}
-      logout={logout}
+      logout={handleLogout}
     />
   );
 };

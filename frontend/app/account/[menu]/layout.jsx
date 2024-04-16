@@ -3,21 +3,43 @@
 import "../../../components/account/account.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight} from '@fortawesome/free-solid-svg-icons';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Link from 'next/link'
+import { AuthContext } from "@/AuthContext";
+import { useRouter } from 'next/navigation';
 
 export default function RootLayout({ children , params }) {
-    const [isAdmin, setIsAdmin] = useState(true);
+    const [userName, setUserName] = useState("user_Name");
+    const [userRole, setUserRole] = useState("user");
     const [myClass, setMyClass] = useState(false);
     const [orderCart, setOrderCart] = useState(false);
     const [orderHistory, setOrderHistory] = useState(false);
     const [dashboard, setDashboard] = useState(false);
     const [manageCourse, setManageCourse] = useState(false);
 
+    const {  logout , user } = useContext(AuthContext);
+    const router = useRouter();
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            if (user) {
+                setUserName(user.name)
+                setUserRole(user.role)
+            } else {
+                setUserName("user_Name");
+                setUserRole("user")
+            }
+        }
+
+        fetchUserData();
+    }, [user]);
+
       useEffect(() => {
         setMyClass(false);
         setOrderCart(false);
         setOrderHistory(false);
+        setDashboard(false);
+        setManageCourse(false);
     
         if (params.menu === "myClass") {
             setMyClass(true);
@@ -32,6 +54,10 @@ export default function RootLayout({ children , params }) {
         }
       }, [params.menu]);
 
+    const handleLogout = () => {
+        router.push('/');
+        logout();
+    }
     return (
           <main className="w-full mainbg">
             <div className="w-full lg:w-[1120px] mx-auto flex  h-full  ">
@@ -39,7 +65,7 @@ export default function RootLayout({ children , params }) {
 
                     <div className=" font-medium text-2xl mb-[40px] mt-[60px]">
                         <div>Hello,</div>
-                        <div className="flex items-center gap-2 mt-1">User_Name!<FontAwesomeIcon className="text-[#ED2040] font-thin text-base" icon={faAngleRight} /></div>
+                        <div className="flex items-center gap-2 mt-1">{userName}!<FontAwesomeIcon className="text-[#ED2040] font-thin text-base" icon={faAngleRight} /></div>
                     </div>
                     
                     <div className="flex flex-col gap-2.5">
@@ -70,7 +96,7 @@ export default function RootLayout({ children , params }) {
                             <div className="">Order History</div>
                             <FontAwesomeIcon icon={faAngleRight} />
                         </Link>
-                        { isAdmin ? (
+                        { userRole === "admin" ? (
                         <>
                         <Link href="/account/dashboard" className={`flex h-[49px] w-[312px] justify-between rounded-[8px] items-center px-6 ${
                                 dashboard
@@ -95,7 +121,7 @@ export default function RootLayout({ children , params }) {
                         
                     </div>
 
-                    <div className="text-[#C5C5C5] font-medium text-base mt-[20px]">Sign out</div>
+                    <div onClick={handleLogout} className="text-[#C5C5C5] font-medium text-base mt-[20px] cursor-pointer">Sign out</div>
                 </div>
 
 

@@ -1,8 +1,45 @@
+"use client"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useContext, useEffect, useState } from 'react';
 import { faPlay,faPercent,faRotateRight} from '@fortawesome/free-solid-svg-icons';
 import "./products.css"
+import { AuthContext } from "@/AuthContext";
+import axiosInstance from "@/axios.config";
+import { useRouter } from 'next/navigation';
 
 function butButtom({price, classStatus, id}) {
+  const { user } = useContext(AuthContext);
+  const [userData, setUserData] = useState(null);
+  const router = useRouter();
+  
+  useEffect(() => {
+    if (user) {
+      setUserData(user);
+    } else {
+      setUserData(null);
+    }
+  }, [user]);
+
+  const handleAddToCart = async () => {
+    if (!userData) {
+      router.push('/login/signIn');
+      // Handle the case when a user is not logged in (e.g., redirect to login)
+      return;
+    }
+
+    try {
+      const response = await axiosInstance.post('/carts/addCourse', {
+        userId: userData._id,
+        courseId: id,
+      });
+
+      console.log(response.data.message); // Log the success message
+      alert("This course added to your Cart.");
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      // Handle the error (e.g., display an error message)
+    }
+  };
   return (
         <div className='flex flex-col items-center'>
             <div className="flex gap-5">
@@ -28,7 +65,7 @@ function butButtom({price, classStatus, id}) {
             <div className=" text-2xl font-medium mx-2">USD {price}</div>
             <div className="">Up to <span className="text-[#ED2040] font-bold mx-1">16%</span> off</div>
           </div>
-          <div className="bg-[#ED2040] buyBtn w-[17rem] h-[2.7rem] rounded-md flex justify-center items-center text-base font-normal">Enroll Now</div>
+          <div onClick={handleAddToCart} className="bg-[#ED2040] buyBtn w-[17rem] h-[2.7rem] rounded-md flex justify-center items-center text-base font-normal">Enroll Now</div>
         </div>
   )
 }

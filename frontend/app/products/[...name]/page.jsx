@@ -28,7 +28,8 @@ export default function Page({params}) {
           return 'Loading price...';  // Or another placeholder
       } 
       return price.toFixed(2); 
-  };
+    };
+    
       return (
         <div className="w-full bg-black flex flex-col justify-center items-center">
           <div className="w-11/12 lg:w-[1120px] mx-auto">

@@ -5,6 +5,9 @@ import mongoose from 'mongoose';
 import accountsRoute from './routes/accountsRoute.js';
 import coursesRoute from './routes/coursesRoute.js';
 import categoriesRoute from './routes/categoryRoute.js';
+import cartsRoute from './routes/cartRoute.js';
+import myClassesRoute from './routes/myClassRoute.js';
+import purchaseHistoryRoute from './routes/purchaseHistoryRoute.js';
 import cors from 'cors';
 
 const app = express();
@@ -20,6 +23,9 @@ app.get('/', (req, res) => {
 app.use('/accounts', accountsRoute );
 app.use('/courses', coursesRoute );
 app.use('/categories', categoriesRoute );
+app.use('/carts', cartsRoute );
+app.use('/myClasses', myClassesRoute );
+app.use('/purchaseHistories', purchaseHistoryRoute );
 
 mongoose
     .connect(mongoDBURL)
