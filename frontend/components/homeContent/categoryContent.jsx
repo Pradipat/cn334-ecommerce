@@ -36,50 +36,6 @@ export default function categoryContent({category}) {
                     id={course._id}
                 />
             ))}
-            {/* <CategoryCard 
-                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                teacherRole="Fullstack Dev"
-                teacherName="akkharawoot"
-                imageSource="/Class1.png"
-                status="Now Available"
-                id="12123"
-            />
-            <CategoryCard 
-                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                teacherRole="Fullstack Dev"
-                teacherName="akkharawoot"
-                imageSource="/Class1.png"
-                status="Now Available"
-                id="12123"
-            /><CategoryCard 
-                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                teacherRole="Fullstack Dev"
-                teacherName="akkharawoot"
-                imageSource="/Class1.png"
-                status="Now Available"
-                id="12123"
-            /><CategoryCard 
-                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                teacherRole="Fullstack Dev"
-                teacherName="akkharawoot"
-                imageSource="/Class1.png"
-                status="Now Available"
-                id="12123"
-            /><CategoryCard 
-                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                teacherRole="Fullstack Dev"
-                teacherName="akkharawoot"
-                imageSource="/Class1.png"
-                status="Now Available"
-                id="12123"
-            /><CategoryCard 
-                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                teacherRole="Fullstack Dev"
-                teacherName="akkharawoot"
-                imageSource="/Class1.png"
-                status="Now Available"
-                id="12123"
-            /> */}
         </div>
         
         

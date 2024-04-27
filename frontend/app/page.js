@@ -12,7 +12,10 @@ export default function Home() {
           category="Illustration"   
         />
         <CategoryContent 
-          category="Illustration"     
+          category="Programming"     
+        />
+        <CategoryContent 
+          category="Music Production"     
         />
     </main>
   );
