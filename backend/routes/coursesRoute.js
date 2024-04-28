@@ -93,6 +93,32 @@ router.get('/subcategory/:subCategoryName', async (req, res) => {
     }
 });
 
+// Get courses sorted by soldCount (descending)
+router.get('/sortBySales/all', async (req, res) => {
+    try {
+      const courses = await coureses.find({}).sort({ soldCount: -1 }); // -1 for descending order
+      res.status(200).json(courses);
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Get courses by main category, sorted by soldCount (descending)
+router.get('/sortBySales/:mainCategory', async (req, res) => {
+    try {
+      const mainCategory = req.params.mainCategory; 
+
+      const courses = await coureses.find({ mainCategory: mainCategory }) 
+                                   .sort({ soldCount: -1 }); 
+      res.status(200).json(courses);
+
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+});
+
 // Create Crouse
 router.post('/', upload.fields([
     { name: 'thumbnailImage', maxCount: 1 }, 
