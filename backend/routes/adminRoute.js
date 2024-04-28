@@ -187,19 +187,50 @@ router.get('/:id/getCommentPolarity/:idCourse', async (req,res) =>{
         if (arr.length <= 0){
             res.json({result: null});
         }
-        for(const i in arr){
-            if(arr[i]){
-                result += 1;
+        else{
+            for(const i in arr){
+                if(arr[i]){
+                    result += 1;
+                }
+            }
+            if (result/arr.length >= 0.5){
+                res.status(200).json({result:"Positive"});
+            }
+            else{
+                res.status(200).json({result:"Negative"});
             }
         }
-        if (result/arr.length >= 0.5){
-            res.status(200).json({result:"Positive"});
-        }
-        else{
-            res.status(200).json({result:"Negative"});
-        }
-          
     } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+router.get('/:id/getAllUsers/', async (req, res) => {
+    try{
+        const { id } = req.params;
+        const account = await accounts.findById(id);
+        if (account.role != 'admin') {
+            return res.status(200).json({message: "admin only"});
+        }
+        const users = await accounts.find({role:"user"});
+        res.status(200).json(users);
+    }catch(error){
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+router.get('/:id/getAllCommentFromUser/:idUser', async (req, res) => {
+    try{
+        const { id, idUser } = req.params;
+        const account = await accounts.findById(id);
+        if (account.role != 'admin') {
+            return res.status(200).json({message: "admin only"});
+        }
+        const user_comment = await comments.find({user:idUser});
+        res.status(200).json(user_comment);
+    }catch(error){
         console.error(error);
         res.status(500).json({ message: 'Server error' });
     }
