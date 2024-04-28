@@ -30,7 +30,29 @@ export default function Page({params}) {
     const fetchComments = async () => {
         try {
             const response = await axiosInstance.get(`/comments/course/${productId}`);
-            setComments(response.data);
+            const comments = response.data;
+            const commentAnalysisResults = [];
+
+            for (const comment of comments) {
+              const commentId = comment._id; 
+  
+              try {
+                  const polarityResponse = await axiosInstance.get(`/admin/getCommentPolarity/${commentId}`); 
+                  const polarity = polarityResponse.data; // 'Negative' or 'Positive'
+  
+                  // Store the result
+                  commentAnalysisResults.push({
+                      comment, // If you want the original comment object 
+                      polarity
+                  });
+              } catch (error) {
+                  console.error(`Error analyzing comment ${commentId}`, error);  
+              }
+          }
+
+          console.log(commentAnalysisResults);
+          setComments(response.data);
+          
         } catch (error) {
             console.error('Error fetching comments:', error);
             // Handle error (display an error message)
