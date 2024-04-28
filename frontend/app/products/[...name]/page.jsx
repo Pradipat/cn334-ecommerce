@@ -27,7 +27,7 @@ export default function Page({params}) {
       };
       fetchProduct();
 
-      const fetchComments = async () => {
+    const fetchComments = async () => {
         try {
             const response = await axiosInstance.get(`/comments/course/${productId}`);
             setComments(response.data);
@@ -45,7 +45,6 @@ export default function Page({params}) {
       } 
       return price.toFixed(2); 
     };
-    
 
     const handleSubmitComment = async (e) => {
       e.preventDefault(); 
@@ -68,16 +67,16 @@ export default function Page({params}) {
               setComments(response.data);
           } catch (error) {
               console.error('Error fetching comments:', error);
-              // Handle error (display an error message)
           }
         };
-        fetchComments(); // Call the function to refetch comments
+        fetchComments();
 
       } catch (error) {
         console.error('Error submitting comment:', error);
         // Handle the error, display an error message to the user
       }
     };
+
       return (
         <div className="w-full bg-black flex flex-col justify-center items-center">
           <div className="w-11/12 lg:w-[1120px] mx-auto">
@@ -134,6 +133,8 @@ export default function Page({params}) {
               name={comment.user?.name || 'Unknown User'}
               time={moment(comment.createdAt).format('YYYY-MM-DD')}
               content={comment.content}
+              // ใส่ค่า Positive หรือ Negative
+              type="Positive"
             />
           ))}
 

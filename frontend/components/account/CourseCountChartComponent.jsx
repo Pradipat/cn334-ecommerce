@@ -8,7 +8,6 @@ const ChartComponent = ({ courseData }) => {
   useEffect(() => {
     const ctx = chartRef.current.getContext('2d');
 
-    // Destroy any existing chart instance
     if (window.myChart) { 
       window.myChart.destroy(); 
     }
