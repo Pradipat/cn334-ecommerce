@@ -266,4 +266,3 @@ router.post('/updateSoldCount', async (req, res) => {
 });
 
 export default router;
-
