@@ -30,36 +30,17 @@ export default function Page({params}) {
     const fetchComments = async () => {
         try {
             const response = await axiosInstance.get(`/comments/course/${productId}`);
-            const comments = response.data;
-            const commentAnalysisResults = [];
+            setComments(response.data);
 
-            for (const comment of comments) {
-              const commentId = comment._id; 
-  
-              try {
-                  const polarityResponse = await axiosInstance.get(`/admin/getCommentPolarity/${commentId}`); 
-                  const polarity = polarityResponse.data; // 'Negative' or 'Positive'
-  
-                  // Store the result
-                  commentAnalysisResults.push({
-                      comment, // If you want the original comment object 
-                      polarity
-                  });
-              } catch (error) {
-                  console.error(`Error analyzing comment ${commentId}`, error);  
-              }
-          }
-
-          console.log(commentAnalysisResults);
-          setComments(response.data);
-          
         } catch (error) {
             console.error('Error fetching comments:', error);
             // Handle error (display an error message)
         }
       }
+
       fetchComments();
     }, [productId]);
+
 
     const formatPrice = (price) => {
       if (typeof price !== 'number') { // Check for undefined or non-numeric types 
@@ -98,7 +79,6 @@ export default function Page({params}) {
         // Handle the error, display an error message to the user
       }
     };
-
       return (
         <div className="w-full bg-black flex flex-col justify-center items-center">
           <div className="w-11/12 lg:w-[1120px] mx-auto">
@@ -155,8 +135,6 @@ export default function Page({params}) {
               name={comment.user?.name || 'Unknown User'}
               time={moment(comment.createdAt).format('YYYY-MM-DD')}
               content={comment.content}
-              // ใส่ค่า Positive หรือ Negative
-              type="Positive"
             />
           ))}
 

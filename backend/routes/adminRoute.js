@@ -146,11 +146,14 @@ router.get('/:id/getCommentSelectCourse/:idCourse', async (req, res) => {
 
 
 
-router.get('/getCommentPolarity/:idCourse', async (req,res) =>{
+router.get('/:id/getCommentPolarity/:idCourse', async (req,res) =>{
     try {
         var arr = [];
-        const { idCourse } = req.params;
+        const { id,idCourse } = req.params;
         const account = await accounts.findById(id);
+        if (account.role != 'admin') {
+            return res.status(200).json({message: "admin only"});
+        }
         let result = 0
 
         const commemts = await comments.find({course:idCourse});
