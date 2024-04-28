@@ -8,6 +8,7 @@ import categoriesRoute from './routes/categoryRoute.js';
 import cartsRoute from './routes/cartRoute.js';
 import myClassesRoute from './routes/myClassRoute.js';
 import purchaseHistoryRoute from './routes/purchaseHistoryRoute.js';
+import commentsRoute from './routes/commentsRoute.js'
 import adminRoute from './routes/adminRoute.js'
 
 import cors from 'cors';
@@ -29,6 +30,7 @@ app.use('/categories', categoriesRoute );
 app.use('/carts', cartsRoute );
 app.use('/myClasses', myClassesRoute );
 app.use('/purchaseHistories', purchaseHistoryRoute );
+app.use('/comments',commentsRoute);
 app.use('/admin',adminRoute);
 
 

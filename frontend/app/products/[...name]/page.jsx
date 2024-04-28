@@ -27,17 +27,20 @@ export default function Page({params}) {
       };
       fetchProduct();
 
-      const fetchComments = async () => {
+    const fetchComments = async () => {
         try {
             const response = await axiosInstance.get(`/comments/course/${productId}`);
             setComments(response.data);
+
         } catch (error) {
             console.error('Error fetching comments:', error);
             // Handle error (display an error message)
         }
       }
+
       fetchComments();
     }, [productId]);
+
 
     const formatPrice = (price) => {
       if (typeof price !== 'number') { // Check for undefined or non-numeric types 
@@ -45,7 +48,6 @@ export default function Page({params}) {
       } 
       return price.toFixed(2); 
     };
-    
 
     const handleSubmitComment = async (e) => {
       e.preventDefault(); 
@@ -68,10 +70,9 @@ export default function Page({params}) {
               setComments(response.data);
           } catch (error) {
               console.error('Error fetching comments:', error);
-              // Handle error (display an error message)
           }
         };
-        fetchComments(); // Call the function to refetch comments
+        fetchComments();
 
       } catch (error) {
         console.error('Error submitting comment:', error);

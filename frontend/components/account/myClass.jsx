@@ -39,19 +39,6 @@ function myClass() {
                 img={course.thumbnailImageURL || '/Class1.png'} 
               />
             ))}
-        
-            {/* <MyClassCard 
-              className = "Stylized Character Illustration Using Deformation"
-              teacherName = "Seoji"
-              teacherRole = "Illustrator"
-              img = "/Class1.png"
-            />
-            <MyClassCard 
-              className = "Stylized Character Illustration Using Deformation"
-              teacherName = "Seoji"
-              teacherRole = "Illustrator"
-              img = "/Class1.png"
-            /> */}
           </div>
         </div>
   )
