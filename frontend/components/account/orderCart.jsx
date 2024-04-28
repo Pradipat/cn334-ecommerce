@@ -66,49 +66,6 @@ function orderCart() {
                 onDeleteSuccess={refetchCart}
               />
             ))}
-            {/* <OrderCartCard 
-              className = "Stylized Character Illustration Using Deformation"
-              teacherName = "Seoji"
-              teacherRole = "Illustrator"
-              img = "/Class1.png"
-              price = {190.99}
-              id = "123"
-            />
-            <OrderCartCard 
-              className = "Stylized Character Illustration Using Deformation"
-              teacherName = "Seoji"
-              teacherRole = "Illustrator"
-              img = "/Class1.png"
-              price = {190.99}
-            />
-            <OrderCartCard 
-              className = "Stylized Character Illustration Using Deformation"
-              teacherName = "Seoji"
-              teacherRole = "Illustrator"
-              img = "/Class1.png"
-              price = {190.99}
-            />
-            <OrderCartCard 
-              className = "Stylized Character Illustration Using Deformation"
-              teacherName = "Seoji"
-              teacherRole = "Illustrator"
-              img = "/Class1.png"
-              price = {190.99}
-            />
-            <OrderCartCard 
-              className = "Stylized Character Illustration Using Deformation"
-              teacherName = "Seoji"
-              teacherRole = "Illustrator"
-              img = "/Class1.png"
-              price = {190.99}
-            />
-            <OrderCartCard 
-              className = "Stylized Character Illustration Using Deformation"
-              teacherName = "Seoji"
-              teacherRole = "Illustrator"
-              img = "/Class1.png"
-              price = {190.99}
-            /> */}
           </div>
         </div>
   )

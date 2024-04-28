@@ -34,14 +34,6 @@ function orderHistory() {
                   purchaseHistoryData={order} // Pass the individual order object
               />
             ))}
-            {/* <OrderHistoryCard 
-              className = "Stylized Character Illustration Using Deformation"
-              teacherName = "Seoji"
-              teacherRole = "Illustrator"
-              price = {190.99}
-              payment = "Paypal"
-              time = "02/29/2024 06:42:29 (UTC-7)"
-            /> */}
           </div>
         </div>
   )
