@@ -206,7 +206,7 @@ router.get('/:id/getCommentPolarity/:idCourse', async (req,res) =>{
     }
 });
 
-router.get('/:id/getAllUsers/', async (req, res) => {
+router.get('/:id/getAllUsers', async (req, res) => {
     try{
         const { id } = req.params;
         const account = await accounts.findById(id);
