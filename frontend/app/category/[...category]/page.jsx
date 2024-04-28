@@ -12,6 +12,7 @@ export default function Page({params}) {
 const [mainCategory, subCategory] = params.category;
 const [mainCategoryUI, setMainCategoryUI] = useState("mainCategory");
 const [courses, setCourses] = useState([]);
+const [topCourses, setTopCourses] = useState([]);
 
 useEffect(() => {
   const transformMainCategory = () => {
@@ -23,6 +24,17 @@ useEffect(() => {
   if (mainCategory) { // Check if mainCategory exists
       transformMainCategory();
   }
+
+  const fetchTopCourses = async () => {
+    try {
+      const response = await axiosInstance.get(`/courses/sortBySales/${mainCategory}`);
+      setTopCourses(response.data.slice(0, 3)); // Get top 3
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+      // Handle error (e.g., display an error message)
+    }
+  }
+  fetchTopCourses(); 
 }, [mainCategory]);
 
 useEffect(() => {
@@ -59,29 +71,17 @@ useEffect(() => {
 
         <div className="mb-4 text-[1.1rem] font-semibold md:text-[1.3rem] text-black mt-[60px]">Popular Class</div>
         <div className=" flex gap-8 md:justify-between overflow-auto md:overflow-visible">
-            <PopularCard 
-                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                teacherRole="Fullstack Dev"
-                teacherName="akkharawoot"
-                imageSource="/Class1.png"
+            {topCourses.map((course) => ( 
+              <PopularCard 
+                key={course._id}
+                title={course.title} 
+                teacherRole={course.instructorRole}
+                teacherName={course.instructorName}
+                imageSource={course.thumbnailImageURL || '/Class1.png'} 
                 status="Now Available"
-                id="12123"
-            />
-            <PopularCard 
-                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                teacherRole="Fullstack Dev"
-                teacherName="akkharawoot"
-                imageSource="/Class1.png"
-                status="Now Available"
-                id="12123"
-            /><PopularCard 
-                title="50 Chapter Guide to HTML , CSS , JS for Web Development"
-                teacherRole="Fullstack Dev"
-                teacherName="akkharawoot"
-                imageSource="/Class1.png"
-                status="Now Available"
-                id="12123"
-            />
+                id={course._id}
+              />
+            ))} 
         </div>
 
         <div className="flex justify-between items-center mt-[60px] mb-4">

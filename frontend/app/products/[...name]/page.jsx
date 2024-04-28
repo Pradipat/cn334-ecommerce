@@ -1,13 +1,19 @@
 "use client"
 import ProductImg from "@/components/products/productImg";
 import BuyButtom from "@/components/products/buyButtom";
+import CommentCard from "@/components/products/commentCard";
 import ProductDetail from "@/components/products/productDetail";
 import axiosInstance from "@/axios.config";
-import React, { useState, useEffect } from 'react';
+import moment from 'moment'; 
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from "@/AuthContext";
 
 export default function Page({params}) {
     const [productId, name] = params.name;
     const [productData, setProductData] = useState("");
+    const [newComment, setNewComment] = useState('');
+    const [comments, setComments] = useState([]);
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
       const fetchProduct = async () => {
@@ -19,8 +25,18 @@ export default function Page({params}) {
           // Handle error (e.g., display an error message)
         }
       };
-  
       fetchProduct();
+
+      const fetchComments = async () => {
+        try {
+            const response = await axiosInstance.get(`/comments/course/${productId}`);
+            setComments(response.data);
+        } catch (error) {
+            console.error('Error fetching comments:', error);
+            // Handle error (display an error message)
+        }
+      }
+      fetchComments();
     }, [productId]);
 
     const formatPrice = (price) => {
@@ -30,6 +46,38 @@ export default function Page({params}) {
       return price.toFixed(2); 
     };
     
+
+    const handleSubmitComment = async (e) => {
+      e.preventDefault(); 
+    
+      try {
+        const response = await axiosInstance.post('/comments/', {
+          content: newComment,
+          userId: user._id,
+          courseId: productId
+        });
+    
+        // Success!
+        console.log('Comment submitted:', response.data);
+        setNewComment('');
+
+        // Refetch Comments
+        const fetchComments = async () => { 
+          try {
+              const response = await axiosInstance.get(`/comments/course/${productId}`); 
+              setComments(response.data);
+          } catch (error) {
+              console.error('Error fetching comments:', error);
+              // Handle error (display an error message)
+          }
+        };
+        fetchComments(); // Call the function to refetch comments
+
+      } catch (error) {
+        console.error('Error submitting comment:', error);
+        // Handle the error, display an error message to the user
+      }
+    };
       return (
         <div className="w-full bg-black flex flex-col justify-center items-center">
           <div className="w-11/12 lg:w-[1120px] mx-auto">
@@ -63,38 +111,33 @@ export default function Page({params}) {
             <div className="text-[#A0A0A0] font-light text-xl">{productData.descriptionContent}</div>
           </div>
 
-
-
-          {/* <div className="w-11/12 lg:w-[1120px] mx-auto">
-            <ProductImg 
-              teacherName="DOKSA"
-              teacherRole="Concept Artist"
-              className="The 50-Chapter Guide to Character Design for Beginners"
-              mainCategory="Illustration"
-              subCategory="Characters"
-              classImg="/productBanner.png"
-            />
+        {user ?
+          <div className="w-11/12 md:w-9/12 lg:w-[990px] mx-auto mb-[20px]">
+            <div className="mb-4 font-semibold text-lg">Review</div> 
+              <textarea 
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-400 text-[#A0A0A0]" 
+                  placeholder="Write your review here..."
+                  value={newComment} 
+                  onChange={(event) => setNewComment(event.target.value)} 
+                  rows="4" 
+              />
+            <button className="bg-[#da1633] hover:bg-[#da1633] text-white font-medium py-2 px-4 rounded-md" 
+                    onClick={handleSubmitComment}
+            >
+              Submit Review
+            </button>
           </div>
+          : " "}
 
-          <BuyButtom 
-            price={190.99}
-            classStatus="Now Available"
-          />
+          {comments.map((comment) => (
+            <CommentCard 
+              name={comment.user?.name || 'Unknown User'}
+              time={moment(comment.createdAt).format('YYYY-MM-DD')}
+              content={comment.content}
+            />
+          ))}
 
-          <ProductDetail 
-            classStatus="Now Available"
-            timeLimit="Unlimited Access"
-            level="Beginner"
-            videoTotal={25}
-            videoTime={[29,40]}
-            price={190.99}
-          />
-
-          <div className="w-11/12 md:w-9/12 lg:w-[990px] mx-auto my-[60px] ">
-            <div className=" font-semibold text-3xl mb-3">Master the Art with Guweiz, the Illustrator with 1M+ Follower</div>
-            <div className="text-[#A0A0A0] font-light text-xl">Master art fundamentals and advanced techniques with Guweiz, who has collaborated with industry giants like Bandai Namco, Mynet, Gamefreak, Square Enix, Pixiv, and more. Gain insights into professional techniques and tools to enhance your artistic journey.</div>
-          </div> */}
-
+          <div className="w-11/12 md:w-9/12 lg:w-[990px] mx-auto mb-[60px]"></div>
         </div>
       )
     }    
