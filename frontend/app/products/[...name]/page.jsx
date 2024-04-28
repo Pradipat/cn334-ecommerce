@@ -13,6 +13,7 @@ export default function Page({params}) {
     const [productData, setProductData] = useState("");
     const [newComment, setNewComment] = useState('');
     const [comments, setComments] = useState([]);
+    const [polarity, setPolarity] = useState([]);
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
@@ -30,7 +31,27 @@ export default function Page({params}) {
     const fetchComments = async () => {
         try {
             const response = await axiosInstance.get(`/comments/course/${productId}`);
+            const comments = response.data;
+            const commentAnalysisResults = [];
+
+            for (const comment of comments) {
+              const commentId = comment._id; 
+
+              try {
+                  const polarityResponse = await axiosInstance.get(`/comments/Polarity/${commentId}`); 
+                  const polarity = polarityResponse.data; // 'Negative' or 'Positive'
+
+                  // Store the result
+                  commentAnalysisResults.push({
+                    comment_Id: comment._id ,
+                    Polarity: polarity
+                  });
+              } catch (error) {
+                  console.error(`Error analyzing comment ${commentId}`, error);  
+              }
+          }
             setComments(response.data);
+            setPolarity(commentAnalysisResults);
 
         } catch (error) {
             console.error('Error fetching comments:', error);
@@ -135,6 +156,7 @@ export default function Page({params}) {
               name={comment.user?.name || 'Unknown User'}
               time={moment(comment.createdAt).format('YYYY-MM-DD')}
               content={comment.content}
+              type={polarity.find(result => result.comment_Id === comment._id)?.Polarity || 'Neutral'}
             />
           ))}
 
