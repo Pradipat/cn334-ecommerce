@@ -30,3 +30,6 @@ Prerequisites
 - npm run dev
 
 The backend server will be running at http://localhost:8000, and the frontend development server will be running at http://localhost:3000.
+
+## Figma 
+- https://www.figma.com/design/i0JSro4QYLU8o5Rz62jtXC/CN334-Figma?node-id=4-4&t=tQqjonGrmD07VUvY-1
