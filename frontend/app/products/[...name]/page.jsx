@@ -38,20 +38,20 @@ export default function Page({params}) {
               const commentId = comment._id; 
 
               try {
-                  const polarityResponse = await axiosInstance.get(`/comments/Polarity/${commentId}`); 
-                  const polarity = polarityResponse.data; // 'Negative' or 'Positive'
+                  // const polarityResponse = await axiosInstance.get(`/comments/Polarity/${commentId}`); 
+                  // const polarity = polarityResponse.data; // 'Negative' or 'Positive'
 
-                  // Store the result
-                  commentAnalysisResults.push({
-                    comment_Id: comment._id ,
-                    Polarity: polarity
-                  });
+                  // // Store the result
+                  // commentAnalysisResults.push({
+                  //   comment_Id: comment._id ,
+                  //   Polarity: polarity
+                  // });
               } catch (error) {
                   console.error(`Error analyzing comment ${commentId}`, error);  
               }
           }
             setComments(response.data);
-            setPolarity(commentAnalysisResults);
+            // setPolarity(commentAnalysisResults);
 
         } catch (error) {
             console.error('Error fetching comments:', error);
